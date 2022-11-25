@@ -23,4 +23,4 @@ class DetailItem:
     detail: Optional[str] = field(default=None)
     address: Optional[str] = field(default=None)
     country: Optional[str] = field(default=None)
-    social: Optional[list[str]] = field(default=[])
+    social: Optional[list[str]] = field(default_factory=lambda: [])

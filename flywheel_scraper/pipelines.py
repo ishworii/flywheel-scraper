@@ -10,4 +10,5 @@ from itemadapter import ItemAdapter
 
 class FlywheelScraperPipeline:
     def process_item(self, item, spider):
-        return item
+        print(item)
+        exit(-1)
