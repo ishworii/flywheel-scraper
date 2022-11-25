@@ -26,3 +26,5 @@ class FlywheelSpider(scrapy.Spider):
         each_item.add_css("address", ".agency-details__list span::text")
         each_item.add_css("country", ".agency-details__list p::text")
         each_item.add_css("social", ".agency-details__social a::attr(href)")
+
+        return each_item.load_item()
