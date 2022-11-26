@@ -17,10 +17,14 @@ from typing import Optional
 
 @dataclass
 class DetailItem:
-    url: Optional[str] = field(default=None)
-    business_name: Optional[str] = field(default=None)
-    website: Optional[str] = field(default=None)
-    detail: Optional[str] = field(default=None)
-    address: Optional[str] = field(default=None)
-    country: Optional[str] = field(default=None)
-    social: Optional[list[str]] = field(default_factory=lambda: [])
+    url: str = field(default=None)
+    business_name: str = field(default=None)
+    website: str = field(default=None)
+    detail: str = field(default=None)
+    address: str = field(default=None)
+    country: str = field(default=None)
+    social: list[str] = field(default_factory=lambda: [])
+    facebook: str = field(default=None)
+    instagram: str = field(default=None)
+    linkedin: str = field(default=None)
+    twitter: str = field(default=None)

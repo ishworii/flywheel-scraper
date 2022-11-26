@@ -19,12 +19,22 @@ class FlywheelSpider(scrapy.Spider):
     def parse_each(self, response):
 
         each_item = ItemLoader(item=DetailItem(), response=response)
-        each_item.add_value("url", response)
-        each_item.add_css("business_name", "h1.feature-title::text")
-        each_item.add_css("website", "p.agency-link a::attr(href)")
-        each_item.add_css("detail", ".agency__intro-content p::text")
-        each_item.add_css("address", ".agency-details__list span::text")
-        each_item.add_css("country", ".agency-details__list p::text")
-        each_item.add_css("social", ".agency-details__social a::attr(href)")
-
+        each_item.add_value("url", response.url)
+        each_item.add_value(
+            "business_name", response.css("h1.feature-title::text").get()
+        )
+        website = response.css("p.agency-link a::attr(href)").get()
+        each_item.add_value("website", website)
+        each_item.add_value(
+            "detail", response.css(".agency__intro-content p::text").get()
+        )
+        each_item.add_value(
+            "address", response.css(".agency-details__list span::text").get()
+        )
+        each_item.add_value(
+            "country", response.css(".agency-details__list p::text").get()
+        )
+        each_item.add_value(
+            "social", response.css(".agency-details__social a::attr(href)").getall()
+        )
         return each_item.load_item()
